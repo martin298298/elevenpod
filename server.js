@@ -93,7 +93,7 @@ app.get('/api/health', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🎙️  AI-Powered Podcast Generator running on http://localhost:${PORT}`);
+    console.log(`🎙️  Vocura running on http://localhost:${PORT}`);
     console.log(`📋 Health check: http://localhost:${PORT}/api/health`);
     
     // Check if API keys are configured
