@@ -1,7 +1,7 @@
 {
-  "name": "elevenpod",
+  "name": "vocura",
   "version": "1.0.0",
-  "description": "AI-Powered Podcast Generator with OpenAI and ElevenLabs",
+  "description": "Vocura - AI-Powered Podcast Generator with OpenAI and ElevenLabs",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "keywords": ["podcast", "ai", "openai", "elevenlabs", "text-to-speech"],
-  "author": "AI-Powered Podcast Generator Team",
+  "author": "Vocura Team",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",

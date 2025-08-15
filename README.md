@@ -1,8 +1,8 @@
-# AI-Powered Podcast Generator
+# Vocura - AI-Powered Podcast Generator
 
 ## Project Description
 
-Welcome to the AI-Powered Podcast Generator! This application allows users to listen to engaging podcasts featuring two virtual hosts discussing various countries and cities around the world. Using advanced AI technologies, we generate scripts for each episode with the assistance of OpenAI, ensuring informative and entertaining content. The audio for these podcasts is synthesized using ElevenLabs, providing a natural and realistic voice experience for our listeners.
+Welcome to **Vocura**! This application allows users to listen to engaging podcasts featuring two virtual hosts discussing various countries and cities around the world. Using advanced AI technologies, we generate scripts for each episode with the assistance of OpenAI, ensuring informative and entertaining content. The audio for these podcasts is synthesized using ElevenLabs, providing a natural and realistic voice experience for our listeners.
 
 ### Features:
 - **Dynamic Script Generation:** Each episode's script is dynamically created based on the selected topics, ensuring fresh and relevant discussions.

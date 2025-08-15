@@ -35,9 +35,8 @@ class ElevenLabsService {
                 audioSegments.push(audioBuffer);
             }
             
-            // Combine audio segments (for now, we'll just use the first one as a simple implementation)
-            // In a full implementation, you'd want to concatenate the audio files
-            const combinedAudio = audioSegments[0] || Buffer.alloc(0);
+            // Combine audio segments by concatenating all buffers
+            const combinedAudio = audioSegments.length > 0 ? Buffer.concat(audioSegments) : Buffer.alloc(0);
             
             // Save the audio file
             const fileName = `podcast_${location.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}_${uuidv4()}.mp3`;
