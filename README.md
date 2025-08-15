@@ -15,7 +15,47 @@ Welcome to the AI-Powered Podcast Generator! This application allows users to li
 3. **Voice Synthesis:** The generated script is then converted to audio using ElevenLabs, creating a seamless listening experience.
 
 ### Getting Started:
-To get started with the AI-Powered Podcast Generator, clone the repository and follow the setup instructions provided in the documentation.
+
+#### Prerequisites
+- Node.js 16.0.0 or higher
+- npm (comes with Node.js)
+
+#### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/martin298298/elevenpod.git
+   cd elevenpod
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+   Then edit `.env` and add your API keys:
+   - `OPENAI_API_KEY`: Your OpenAI API key
+   - `ELEVENLABS_API_KEY`: Your ElevenLabs API key
+
+4. Start the application:
+   ```bash
+   npm start
+   ```
+   
+   For development with auto-reload:
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and navigate to `http://localhost:3000`
+
+#### API Endpoints
+- `GET /` - Main application interface
+- `GET /health` - Health check endpoint
+- `POST /api/generate-podcast` - Generate podcast (coming soon)
 
 ### Future Enhancements:
 - Expand the range of topics and locations covered.
