@@ -1,0 +1,9 @@
+# Python dependencies for Vocura - AI-Powered Podcast Generator
+# This is primarily a Node.js project, but this file satisfies deployment platform requirements
+
+# Core Python packages (in case Python utilities are added in the future)
+# requests>=2.31.0
+# python-dotenv>=1.0.0
+
+# If no Python dependencies are needed, this file can remain minimal
+# The main dependencies are managed through package.json for Node.js
