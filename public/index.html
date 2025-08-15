@@ -14,9 +14,58 @@
             <p class="subtitle">Discover the world through engaging AI-generated conversations</p>
         </header>
 
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Coverage</h3>
+                    <p>Explore any destination worldwide with AI-generated travel insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Multi-Language Support</h3>
+                    <p>Listen in English, Spanish, French, German, or Italian</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Natural Conversations</h3>
+                    <p>Choose between male and female AI voices for authentic dialogue</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Generation</h3>
+                    <p>Get your personalized podcast episode in minutes</p>
+                </div>
+            </div>
+        </section>
+
         <main class="main-content">
             <section class="location-selection">
                 <h2>Choose Your Destination</h2>
+                
+                <!-- Voice and Language Preferences -->
+                <div class="preferences-container">
+                    <div class="preference-group">
+                        <label for="languageSelect" class="preference-label">Language</label>
+                        <select id="languageSelect" class="preference-select">
+                            <option value="en">English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="it">Italian</option>
+                        </select>
+                    </div>
+                    
+                    <div class="preference-group">
+                        <label for="voiceSelect" class="preference-label">Voice</label>
+                        <select id="voiceSelect" class="preference-select">
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                        </select>
+                    </div>
+                </div>
+                
                 <div class="search-container">
                     <input 
                         type="text" 
