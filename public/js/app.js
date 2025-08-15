@@ -8,6 +8,8 @@ class PodcastGenerator {
 
     initializeElements() {
         this.locationInput = document.getElementById('locationInput');
+        this.languageSelect = document.getElementById('languageSelect');
+        this.voiceSelect = document.getElementById('voiceSelect');
         this.generateBtn = document.getElementById('generateBtn');
         this.locationsList = document.getElementById('locationsList');
         this.statusSection = document.getElementById('statusSection');
@@ -58,6 +60,8 @@ class PodcastGenerator {
 
     async generatePodcast() {
         const location = this.locationInput.value.trim();
+        const language = this.languageSelect.value;
+        const voice = this.voiceSelect.value;
         
         if (!location) {
             alert('Please enter a location');
@@ -73,7 +77,11 @@ class PodcastGenerator {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ location }),
+                body: JSON.stringify({ 
+                    location, 
+                    language,
+                    voice 
+                }),
             });
 
             const data = await response.json();

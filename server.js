@@ -27,23 +27,25 @@ app.get('/', (req, res) => {
 // API endpoint to generate podcast
 app.post('/api/generate-podcast', async (req, res) => {
     try {
-        const { location } = req.body;
+        const { location, language = 'en', voice = 'female' } = req.body;
         
         if (!location) {
             return res.status(400).json({ error: 'Location is required' });
         }
 
-        console.log(`Generating podcast for: ${location}`);
+        console.log(`Generating podcast for: ${location} (Language: ${language}, Voice: ${voice})`);
         
         // Step 1: Generate script using OpenAI
-        const script = await openaiService.generatePodcastScript(location);
+        const script = await openaiService.generatePodcastScript(location, language);
         
         // Step 2: Convert script to audio using ElevenLabs
-        const audioFilePath = await elevenlabsService.generateAudio(script, location);
+        const audioFilePath = await elevenlabsService.generateAudio(script, location, language, voice);
         
         res.json({
             success: true,
             location: location,
+            language: language,
+            voice: voice,
             script: script,
             audioUrl: `/audio/${path.basename(audioFilePath)}`
         });

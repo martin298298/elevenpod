@@ -13,10 +13,21 @@ class OpenAIService {
         });
     }
 
-    async generatePodcastScript(location) {
+    async generatePodcastScript(location, language = 'en') {
         if (!this.client) {
             throw new Error('OpenAI API key not configured');
         }
+
+        // Language-specific prompts
+        const languageInstructions = {
+            'en': 'Write the script in English.',
+            'es': 'Write the script in Spanish. Use natural Spanish conversation.',
+            'fr': 'Write the script in French. Use natural French conversation.',
+            'de': 'Write the script in German. Use natural German conversation.',
+            'it': 'Write the script in Italian. Use natural Italian conversation.'
+        };
+
+        const languageInstruction = languageInstructions[language] || languageInstructions['en'];
 
         const prompt = `Create an engaging podcast script for a 3-4 minute episode about ${location}. The script should feature two hosts, Alex and Sam, having a natural conversation about this location. Include:
 
@@ -26,6 +37,8 @@ class OpenAIService {
 4. Local cuisine or traditions
 5. Fun or surprising facts
 6. Natural conversation flow with interruptions and reactions
+
+${languageInstruction}
 
 Format the script clearly with:
 - Host names before each line
@@ -41,7 +54,7 @@ Make it sound like two friends talking about travel experiences and interesting 
                 messages: [
                     {
                         role: "system",
-                        content: "You are a professional podcast script writer who creates engaging, conversational content about travel destinations. Write scripts that sound natural and entertaining."
+                        content: `You are a professional podcast script writer who creates engaging, conversational content about travel destinations. Write scripts that sound natural and entertaining. ${languageInstruction}`
                     },
                     {
                         role: "user",

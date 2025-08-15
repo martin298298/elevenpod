@@ -34,7 +34,7 @@ Sam: And don't forget about the Louvre Museum with the Mona Lisa!`;
         jest.spyOn(fs, 'writeFile').mockResolvedValue();
 
         // Call the method
-        const result = await elevenLabsService.generateAudio(multiSpeakerScript, 'Paris');
+        const result = await elevenLabsService.generateAudio(multiSpeakerScript, 'Paris', 'en', 'female');
 
         // Verify that axios.post was called multiple times (once for each speaker segment)
         expect(axios.post).toHaveBeenCalledTimes(4); // 4 segments: Alex, Sam, Alex, Sam
@@ -57,7 +57,7 @@ Sam: And don't forget about the Louvre Museum with the Mona Lisa!`;
         jest.spyOn(fs, 'writeFile').mockResolvedValue();
 
         // Call the method
-        await elevenLabsService.generateAudio(singleSpeakerScript, 'London');
+        await elevenLabsService.generateAudio(singleSpeakerScript, 'London', 'en', 'female');
 
         // Verify that axios.post was called once for the single segment
         expect(axios.post).toHaveBeenCalledTimes(1);
@@ -72,12 +72,25 @@ Sam: Thanks for having me, Alex.
 Alex: Let's talk about our destination today.
 Sam: Absolutely! It's going to be great.`;
 
+        // Test with default 'female' voice preference
         const segments = elevenLabsService.parseScript(script);
 
         expect(segments).toHaveLength(4);
         expect(segments[0]).toEqual({ speaker: 'alex', text: 'Hello and welcome!' });
-        expect(segments[1]).toEqual({ speaker: 'sam', text: 'Thanks for having me, Alex.' });
+        expect(segments[1]).toEqual({ speaker: 'sarah', text: 'Thanks for having me, Alex.' });
         expect(segments[2]).toEqual({ speaker: 'alex', text: 'Let\'s talk about our destination today.' });
-        expect(segments[3]).toEqual({ speaker: 'sam', text: 'Absolutely! It\'s going to be great.' });
+        expect(segments[3]).toEqual({ speaker: 'sarah', text: 'Absolutely! It\'s going to be great.' });
+    });
+
+    test('parseScript should use male voices when specified', () => {
+        const script = `Alex: Hello and welcome!
+Sam: Thanks for having me, Alex.`;
+
+        // Test with 'male' voice preference
+        const segments = elevenLabsService.parseScript(script, 'male');
+
+        expect(segments).toHaveLength(2);
+        expect(segments[0]).toEqual({ speaker: 'sam', text: 'Hello and welcome!' });
+        expect(segments[1]).toEqual({ speaker: 'james', text: 'Thanks for having me, Alex.' });
     });
 });
