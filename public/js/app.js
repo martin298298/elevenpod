@@ -11,6 +11,7 @@ class PodcastGenerator {
         this.languageSelect = document.getElementById('languageSelect');
         this.voiceSelect = document.getElementById('voiceSelect');
         this.generateBtn = document.getElementById('generateBtn');
+        this.createPodcastBtn = document.getElementById('createPodcastBtn');
         this.locationsList = document.getElementById('locationsList');
         this.statusSection = document.getElementById('statusSection');
         this.playerSection = document.getElementById('playerSection');
@@ -28,6 +29,7 @@ class PodcastGenerator {
 
     bindEvents() {
         this.generateBtn.addEventListener('click', () => this.generatePodcast());
+        this.createPodcastBtn.addEventListener('click', () => this.scrollToPodcastCreator());
         this.locationInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 this.generatePodcast();
@@ -35,6 +37,18 @@ class PodcastGenerator {
         });
         this.generateAnotherBtn.addEventListener('click', () => this.resetToSelection());
         this.retryBtn.addEventListener('click', () => this.resetToSelection());
+    }
+
+    scrollToPodcastCreator() {
+        const mainContent = document.querySelector('.main-content');
+        mainContent.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start' 
+        });
+        // Focus on the location input
+        setTimeout(() => {
+            this.locationInput.focus();
+        }, 500);
     }
 
     async loadPopularLocations() {
